@@ -82,7 +82,8 @@ public class ContactHelper extends HelperBase{
     List<WebElement> elements = wd.findElements(By.cssSelector("img[src=\"icons/pencil.png\"]"));
     for (WebElement element : elements){
       String name = element.getText();
-      ContactData contact = new ContactData(name, null, null, null, null, null, null, null, null,
+      String id = element.findElement(By.tagName("input")).getAttribute("id");
+      ContactData contact = new ContactData(id, name, null, null, null, null, null, null, null, null,
               null, null);
       contacts.add(contact);
     }
