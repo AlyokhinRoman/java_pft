@@ -66,6 +66,7 @@ public class ContactHelper extends HelperBase{
     addNewContact();
     fillContactForm(contact, true);
     submitContactCreation();
+    returntoHomePage();
   }
 
     public void modify(int index, ContactData contact) {
@@ -98,9 +99,7 @@ public class ContactHelper extends HelperBase{
     for (WebElement element : elements){
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.xpath("//input[@type='checkbox']")).getAttribute("id"));
-      ContactData contact = new ContactData(id, name, null, null, null, null, null, null, null, null,
-              null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withFirstname(name));
     }
     return contacts;
   }
