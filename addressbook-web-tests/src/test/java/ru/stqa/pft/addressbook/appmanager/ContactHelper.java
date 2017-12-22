@@ -55,20 +55,35 @@ public class ContactHelper extends HelperBase{
   }
 
   public void initContactModification (int index) {
-    wd.findElements(By.xpath("img[src=\"icons/pencil.png\"]")).get(index).click();
+    wd.findElements(By.xpath("//img[contains(@src,'icons/pencil.png')]")).get(index).click();
   }
 
   public void updateContactModification () {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
-  public void createContact (ContactData contact, boolean creation) {
+  public void create(ContactData contact, boolean creation) {
     addNewContact();
     fillContactForm(contact, true);
     submitContactCreation();
   }
 
+    public void modify(int index, ContactData contact) {
+        initContactModification(index);
+        fillContactForm(contact, false);
+        updateContactModification();
+        returntoHomePage();
+    }
 
+    private void returntoHomePage() {
+        click(By.linkText("home"));
+    }
+
+    public void delete(int index) {
+        initContactModification(index);
+        deleteSelectedContacts();
+        returntoHomePage();
+    }
   public boolean isThereAContact () {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
@@ -77,12 +92,12 @@ public class ContactHelper extends HelperBase{
       return wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).size();
     }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("td.center"));
     for (WebElement element : elements){
       String name = element.getText();
-      int id = Integer.parseInt(element.findElement(By.xpath("//input[@type='checkbox']")).getAttribute("value"));
+      int id = Integer.parseInt(element.findElement(By.xpath("//input[@type='checkbox']")).getAttribute("id"));
       ContactData contact = new ContactData(id, name, null, null, null, null, null, null, null, null,
               null, null);
       contacts.add(contact);
