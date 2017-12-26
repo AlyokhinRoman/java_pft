@@ -10,8 +10,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase{
 
@@ -46,16 +47,14 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//div[@id='content']/form[2]/input[2]"));
   }
 
-  public void selectContact () {
-    click(By.id("2"));
-  }
 
   public void addNewContact () {
     click(By.linkText("add new"));
   }
 
-  public void initContactModification (int index) {
-    wd.findElements(By.xpath("//img[contains(@src,'icons/pencil.png')]")).get(index).click();
+
+  public void initContactModificationById (int id) {
+    wd.findElement(By.cssSelector("input[id='" + id + "']")).findElement(By.xpath("//img[@alt='Edit']")).click();
   }
 
   public void updateContactModification () {
@@ -69,8 +68,8 @@ public class ContactHelper extends HelperBase{
     returntoHomePage();
   }
 
-    public void modify(int index, ContactData contact) {
-        initContactModification(index);
+    public void modify(ContactData contact) {
+        initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         updateContactModification();
         returntoHomePage();
@@ -80,11 +79,13 @@ public class ContactHelper extends HelperBase{
         click(By.linkText("home"));
     }
 
-    public void delete(int index) {
-        initContactModification(index);
-        deleteSelectedContacts();
-        returntoHomePage();
-    }
+
+  public void delete(ContactData contact) {
+    initContactModificationById(contact.getId());
+    deleteSelectedContacts();
+    returntoHomePage();
+  }
+
   public boolean isThereAContact () {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
@@ -93,8 +94,9 @@ public class ContactHelper extends HelperBase{
       return wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).size();
     }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.tagName("td"));
     for (WebElement element : elements){
       String name = element.getText();
@@ -103,4 +105,6 @@ public class ContactHelper extends HelperBase{
     }
     return contacts;
   }
+
+
 }
