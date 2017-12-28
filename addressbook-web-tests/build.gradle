@@ -8,4 +8,5 @@ dependencies {
     compile 'org.testng:testng:6.13.1'
     compile group: 'org.beanshell', name: 'bsh', version: '2.0b4'
     compile 'org.seleniumhq.selenium:selenium-java:3.7.1'
+    compile 'org.hamcrest:java-hamcrest:2.0.0.0'
 }
