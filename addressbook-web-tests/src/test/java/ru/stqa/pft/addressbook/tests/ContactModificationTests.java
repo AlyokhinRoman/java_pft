@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
 
@@ -36,9 +37,9 @@ public class ContactModificationTests extends TestBase{
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("first name");
 
      app.contact().modify(contact);
+      assertThat(app.contact().count(), equalTo(before.size()));
      Contacts after = app.contact().all();
     //int after = app.getContactHelper().getContactCount();
-    assertEquals(after.size(), before.size());
 
     assertThat(after, CoreMatchers.equalTo(before.without(modifiedContact).withAdded(contact)));
   }
