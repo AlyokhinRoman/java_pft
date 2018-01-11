@@ -55,7 +55,7 @@ public class ContactHelper extends HelperBase{
 
 
   public void initContactModificationById (int id) {
-    wd.findElement(By.cssSelector("input[id='" + id + "']")).findElement(By.xpath("//img[@alt='Edit']")).click();
+      wd.findElement(By.xpath("//a[@href='edit.php?id="+ id +"']/img[@title='Edit']")).click();
   }
 
   public void updateContactModification () {
@@ -95,7 +95,7 @@ public class ContactHelper extends HelperBase{
   }
 
     public int count() {
-      return wd.findElements(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).size();
+      return wd.findElements(By.xpath("//img[@alt='Edit']")).size();
     }
 
 

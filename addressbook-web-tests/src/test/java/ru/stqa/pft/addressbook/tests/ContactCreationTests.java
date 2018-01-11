@@ -29,7 +29,7 @@ public class ContactCreationTests extends TestBase{
     }
 
 
-    @Test
+    //@Test
     public void testBadContactCreation() {
         app.goTo().gotoHomePage();
 
