@@ -15,7 +15,16 @@ public class ContactData {
   private  String email_2;
   private  String email_3;
   private  String group;
+  private  String allPhones;
 
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
 
   public int getId() {
     return id;
