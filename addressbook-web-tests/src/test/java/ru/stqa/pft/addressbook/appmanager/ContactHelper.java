@@ -106,16 +106,16 @@ public class ContactHelper extends HelperBase{
     for (WebElement row : rows){
       List<WebElement> cells = row.findElements(By.tagName("td"));
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-      contactCache.add(new ContactData().withId(id));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String[] phones = cells.get(5).getText().split("\n");
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withHomephone(phones[0]).withMobilephone(phones[1]).withWorkphone(phones[2]));
     }
-    //List<WebElement> elements = wd.findElements(By.tagName("td"));
-    //for (WebElement element : elements){
-     // String name = element.getText();
-      //int id = Integer.parseInt(element.findElement(By.xpath("//input[contains(@name,'selected[]')]")).getAttribute("value"));
-      //contactCache.add(new ContactData().withId(id).withFirstname(name));
-
     return new Contacts(contactCache);
   }
+
+
 
 
   public ContactData infoFromEditForm(ContactData contact) {
