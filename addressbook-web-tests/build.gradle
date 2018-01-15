@@ -9,4 +9,5 @@ dependencies {
     compile group: 'org.beanshell', name: 'bsh', version: '2.0b4'
     compile 'org.seleniumhq.selenium:selenium-java:3.7.1'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+    compile 'com.beust:jcommander:1.48'
 }
