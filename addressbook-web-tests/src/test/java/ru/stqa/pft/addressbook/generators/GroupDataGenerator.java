@@ -31,7 +31,7 @@ public class GroupDataGenerator {
         }
         generator.run();
     }
-
+    //-c 10 -f src/test/resources/groups.csv
     private void run() throws IOException {
         List<GroupData> groups = generateGroups(count);
         save(groups, new File(file));
@@ -41,7 +41,7 @@ public class GroupDataGenerator {
         System.out.println(new File(".").getAbsolutePath());
         Writer writer = new FileWriter(file);
         for(GroupData group : groups){
-            writer.write(String.format("%s:%s:%s\n", group.getName(), group.getHeader(), group.getFooter()));
+            writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
         }
         writer.close();
     }
