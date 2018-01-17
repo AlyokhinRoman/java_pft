@@ -14,39 +14,4 @@
     <lastname>lastname 2</lastname>
     <group>test1</group>
   </contact>
-  <contact>
-    <firstname>firstname 3</firstname>
-    <lastname>lastname 3</lastname>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <firstname>firstname 4</firstname>
-    <lastname>lastname 4</lastname>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <firstname>firstname 5</firstname>
-    <lastname>lastname 5</lastname>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <firstname>firstname 6</firstname>
-    <lastname>lastname 6</lastname>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <firstname>firstname 7</firstname>
-    <lastname>lastname 7</lastname>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <firstname>firstname 8</firstname>
-    <lastname>lastname 8</lastname>
-    <group>test1</group>
-  </contact>
-  <contact>
-    <firstname>firstname 9</firstname>
-    <lastname>lastname 9</lastname>
-    <group>test1</group>
-  </contact>
 </list>

@@ -13,40 +13,5 @@
     "firstname": "firstname 2",
     "lastname": "lastname 2",
     "group": "test1"
-  },
-  {
-    "firstname": "firstname 3",
-    "lastname": "lastname 3",
-    "group": "test1"
-  },
-  {
-    "firstname": "firstname 4",
-    "lastname": "lastname 4",
-    "group": "test1"
-  },
-  {
-    "firstname": "firstname 5",
-    "lastname": "lastname 5",
-    "group": "test1"
-  },
-  {
-    "firstname": "firstname 6",
-    "lastname": "lastname 6",
-    "group": "test1"
-  },
-  {
-    "firstname": "firstname 7",
-    "lastname": "lastname 7",
-    "group": "test1"
-  },
-  {
-    "firstname": "firstname 8",
-    "lastname": "lastname 8",
-    "group": "test1"
-  },
-  {
-    "firstname": "firstname 9",
-    "lastname": "lastname 9",
-    "group": "test1"
   }
 ]
