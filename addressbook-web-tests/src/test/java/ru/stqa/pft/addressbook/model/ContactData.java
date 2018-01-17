@@ -3,50 +3,84 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
 @Entity
-@Table(name = "users")
+@Table(name = "addressbook")
 public class ContactData {
   @XStreamOmitField
   @Id
-  @Column(name = "user_id")
+  @Column(name = "id")
 
   private int id = Integer.MAX_VALUE;
   @Expose
   @Column(name = "firstname")
   private  String firstname;
+
   private  String middlename;
   @Expose
+
   @Column(name = "lastname")
   private  String lastname;
-  private  String nickname;
-  private  String homephone;
-  private  String mobilephone;
-  private  String workphone;
-  private  String email_1;
-  private  String email_2;
-  private  String email_3;
-  @Expose
-  private  String group;
-  private  String allPhones;
-  private String address;
-  private String allEmails;
-  private File photo;
 
-  public File getPhoto() {
-    return photo;
+  private  String nickname;
+
+  @Column(name = "home")
+  @Type(type = "text")
+  private  String homephone;
+
+  @Column(name = "mobile")
+  @Type(type = "text")
+  private  String mobilephone;
+
+  @Column(name = "work")
+  @Type(type = "text")
+  private  String workphone;
+
+  @Transient
+  private  String email_1;
+
+  @Transient
+  private  String email_2;
+
+  @Transient
+  private  String email_3;
+
+  @Transient
+  private  String group;
+
+  @Transient
+  private  String allPhones;
+
+  @Transient
+  private String address;
+
+  @Transient
+  private String allEmails;
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
+
+  public File getPhoto() {return new File(photo);
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -199,13 +233,5 @@ public class ContactData {
   }
 
   public String getGroup () { return group;  }
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                '}';
-    }
 
 }
